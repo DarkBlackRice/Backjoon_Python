@@ -1,7 +1,7 @@
 # 원상 복구 (small)
 
 import sys
-input = sys.stdin.readline # 안 해도 풀리지만 하면 시간단축 5배 !!!
+input = sys.stdin.readline() # 안 해도 풀리지만 하면 시간단축 5배 !!!
 
 N, K = map(int,input().split())
 
