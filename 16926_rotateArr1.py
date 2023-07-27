@@ -1,29 +1,22 @@
 # 배열 돌리기 1
 
+import sys
+input = sys.stdin.readline
+
 # 함수부
 
 def rotate(row,col,arr):
-    temp_arr = [ [0]*col for _ in range(row)]
+    temp_arr = [[0]*col for _ in range(row)]
 
-    for r in range(row//2):
-        for c in range(col):
-            if c < r:
-                temp_arr[r][c] = arr[r-1][c]
-            elif c > M-(r+2):
-                temp_arr[r][c] = arr[r+1][c]
-            else:
-                temp_arr[r][c] = arr[r][c+1]
-    for r in range(row//2,row):
-        for c in range(col):
-            if c < M - r:
-                temp_arr[r][c] = arr[r-1][c]
-            elif c > M-(N-r):
-                temp_arr[r][c] = arr[r+1][c]
-            else:
-                temp_arr[r][c] = arr[r][c-1]
+    for i in range(min(N,M)//2):
+        for c in range(i,(M-1)-i):
+            temp_arr[i][c] = arr[i][c+1]
+            temp_arr[(N-1)-i][c+1] = arr[(N-1)-i][c]
+        for r in range(i,(N-1)-i):
+            temp_arr[r][(M-1)-i] = arr[r+1][(M-1)-i]
+            temp_arr[r+1][i] = arr[r][i]
 
     return temp_arr
-    
 
 
 # 실행부
