@@ -1,5 +1,6 @@
 # 홀수 홀릭 호석
 
+# 홀수 카운팅 함수
 def count_odd(string):
     cnt = 0
     for n in string:
@@ -8,6 +9,7 @@ def count_odd(string):
     return cnt
 
 
+# 탐색 함수
 def dfs(string, cnt):
     if len(string) == 1:
         global ans
@@ -19,15 +21,18 @@ def dfs(string, cnt):
         dfs(n_str, cnt + count_odd(string))
 
     elif len(string) >= 3:
-        for i in range(1, LENGTH-1):
-            for j in range(i+1, LENGTH):
-                n_str = str(int(string[:i]) + int(string[i:j]) + int(string[j:]))
-                dfs(n_str, cnt + count_odd(string))
+        cases = []
+        length = len(string)
+        temp_cnt = count_odd(string)
+        for i in range(1, length-1):
+            for j in range(i+1, length):
+                cases.append(str(int(string[:i]) + int(string[i:j]) + int(string[j:])))
+        for case in cases:
+            dfs(case, cnt + temp_cnt)
 
+
+# 본 코드
 N = input()
-LENGTH = len(N)
-
-max_v = min_v = 0
 ans = []
 dfs(N, 0)
-print(ans)
+print(min(ans), max(ans))
