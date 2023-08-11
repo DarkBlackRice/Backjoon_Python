@@ -1,16 +1,17 @@
 # 인구 이동
 
 def ally():
-    unions = []
-    temp = [[0] * N for _ in range(N)]
+    
     for r in range(N):
         for c in range(N):
             for i in range(2):
                 nr = r + dr[i]
                 nc = c + dc[i]
                 if (nr<N and nc<N) and (L<=abs(LAND[r][c] - LAND[nr][nc])<=R):
-                    
-    return 
+                    temp[r][c][i] = True
+    return temp
+
+
 
 
 N, L, R = map(int,input().split())
@@ -28,6 +29,7 @@ print()
 
 while flag:
 
+    visited = [[False] * N for _ in range(N)]
     unions = ally()
     
     print('연합 정보 : ')
