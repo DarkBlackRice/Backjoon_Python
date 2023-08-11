@@ -2,25 +2,15 @@
 
 def ally():
     unions = []
+    temp = [[0] * N for _ in range(N)]
     for r in range(N):
         for c in range(N):
             for i in range(2):
                 nr = r + dr[i]
                 nc = c + dc[i]
-                if nr < N and nc < N and \
-                    (L <= abs(LAND[r][c] - LAND[nr][nc]) <= R):
-                    new_union = True
-                    for u in unions:
-                        if ((r,c) in u and (nr, nc) not in u) or\
-                            ((nr,nc) in u and (r, c) not in u):
-                            u.append((nr, nc))
-                            u[0] += LAND[nr][nc]
-                            new_union = False
-                            break
-                    if new_union:
-                        init_population = LAND[r][c] + LAND[nr][nc]
-                        unions.append([init_population, (r, c), (nr, nc)])
-    return unions
+                if (nr<N and nc<N) and (L<=abs(LAND[r][c] - LAND[nr][nc])<=R):
+                    
+    return 
 
 
 N, L, R = map(int,input().split())
