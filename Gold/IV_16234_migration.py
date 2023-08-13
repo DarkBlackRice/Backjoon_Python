@@ -1,16 +1,20 @@
 # 인구 이동
 
-def ally():
-    
-    for r in range(N):
-        for c in range(N):
-            for i in range(2):
-                nr = r + dr[i]
-                nc = c + dc[i]
-                if (nr<N and nc<N) and (L<=abs(LAND[r][c] - LAND[nr][nc])<=R):
-                    temp[r][c][i] = True
-    return temp
+def ally(row, col):
+    union = [LAND[row][col],(row,col)]
+    stack = [(row,col)]
+    while stack:
+        r, c = stack.pop()
+        visited[r][c] = True
+        for i in range(4):
+            nr = r + dr[i]
+            nc = c + dc[i]
+            if (0<=nr<N and 0<=nc<N) and not visited[nr][nc]\
+                (L<=abs(LAND[r][c] - LAND[nr][nc])<=R):
+                stack.append((nr, nc))
 
+                
+    return union
 
 
 
@@ -19,8 +23,8 @@ LAND = [list(map(int,input().split())) for _ in range(N)]
 
 flag = True
 count = 0
-dr = [0, 1]
-dc = [1, 0]
+dr = [0, 1, 0, -1]
+dc = [1, 0, -1, 0]
 
 print('지도 : ')
 for country in LAND:
