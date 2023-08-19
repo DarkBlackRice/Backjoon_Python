@@ -5,6 +5,10 @@ dc = [0, 1, 1]
 
 def dfs(r, c, d):
     global count
+
+    # 이거 가지치기 가능할 것 같음
+    # 안 될듯 ㅋㅋ
+
     if (r, c) == (N-1, N-1):
         count += 1
         return
