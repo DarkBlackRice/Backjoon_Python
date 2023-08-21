@@ -7,10 +7,16 @@ def promising_lst(k,lst):
 
     result = []
     for num in range(N):
-        for i in range(1, len(lst)):
+        promising = True
+        for i in range(1, k+1):
             for j in [-1, 0 ,1]:
-                if num != lst[k-1-i] + j*i:
-                     result.append(num)
+                if num == lst[k-i] + j*i:
+                    promising = False
+                    break
+            if not promising:
+                break
+        if promising:
+            result.append(num)
     return result
 
 def dfs(k, n, lst):
