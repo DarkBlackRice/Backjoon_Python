@@ -68,5 +68,4 @@ for _ in range(T):
             elif visited[h-1][c] != -1 and visited[h-1][c] != v_count:
                     bfs(h-1, c)
             
-
     print(ans)
