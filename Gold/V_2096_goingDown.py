@@ -9,14 +9,16 @@ for a in arr:
     dp[0].append(a)
     dp[1].append(a)
 for _ in range(N-1):
+    ndp = [[],[]]
     arr = list(map(int, input().split()))
     for i in range(3):
         min_lst = []
         max_lst = []
         for j in srch[i]:
-            max_lst.append(dp[0][i] + arr[j])
-            min_lst.append(dp[1][i] + arr[j])
-        dp[0][i] = max(max_lst)
-        dp[1][i] = min(min_lst)
+            max_lst.append(dp[0][j] + arr[i])
+            min_lst.append(dp[1][j] + arr[i])
+        ndp[0].append(max(max_lst))
+        ndp[1].append(min(min_lst))
+    dp = ndp
 print(max(dp[0]), min(dp[1]))
 
